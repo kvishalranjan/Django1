@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+
+    <title>Student Admission Page</title>
+</head>
+
+<body>
+    <center>
+        <h1> List of Students</h1>
+    </center>
+    <a class='link' href="{% url 'cperson' %}">Create Student</a>
+    <div bgcolor="green">
+        <form>
+         <select name="status">
+             <option value="All" selected>All</option>
+             <option value='True'>True</option>
+             <option value='False'>False</option>
+         </select>&nbsp;&nbsp;&nbsp;
+         <button type='sumbit' style="background-color:rgb(71, 80, 202);">Filter</button>
+         </form>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Sl.no.</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">gender</th>
+                <th scope="col">Age</th>
+                <th scope="col">DateofBirth</th>
+                <th scope="col">city</th>
+                <th scope="col">phone.no</th>
+                <th scope="col">verified</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for person in persons %}
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{person.first_name}} {{person.last_name}}</td>
+                <td>{{person.gender}} </td>
+                <td>{{person.age}} </td>
+                <td>{{person.dateofbirth}} </td>
+                <td>{{person.city}}</td>
+                <td>{{person.phone.no}}</td>
+                <td>{{person.is_verify}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+   
+
+    
+</body>
+
+</html>

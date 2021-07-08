@@ -1,0 +1,50 @@
+{% extends 'core/base.html' %}
+
+<!-- Title  -->
+{% block title %}Classification:{% endblock %}
+
+
+<!-- body content -->
+{% block content %}
+<div style="background-color:rgb(110, 246, 83);">
+<center>    
+<h1>Welcome to Classification Page</h1><br>
+
+<h1 style="color:rgb(102, 47, 1);"><u>Iris Prediction</u></h1></center>
+</div>
+
+
+<div style="background-color: rgb(163, 155, 243);">
+
+    <p style="font-size: 150%;"><b>Enter Values to predict:</b></p>
+    <br>
+       <form>
+            <label>Species:</label>&#8287;
+            <select name="species">
+                <option value="1" >Iris Setosa</option>
+                <option value="2">Iris Virginica</option>
+                <option value="3">Iris Versicolor</option>
+                
+            </select><br><br>
+
+            <label>SepalLengthCm:</label>
+            <input type="number" name='SepalLengthCm' placeholder="Enter it's value" required><br><br>
+
+            <label>SepalWidthCm:</label>&nbsp;;&nbsp;
+            
+            <input type="number" name='SepalWidthCm' min="2" step="0.2" max="4.4"  required><br><br>
+
+            <label>PetalLengthCm:</label>&nbsp;&nbsp;
+            <input type="number" name='over_time' placeholder="Enter it's value " required><br><br>
+
+            <label>PetalWidthCm:</label>&nbsp;&nbsp;
+            <input type="number" name='incentive' placeholder="Enter it's value" required><br><br>
+
+            
+           <center><button type='sumbit' style="background-color:rgb(238, 12, 12);">SAVE</button></center>
+        </form>
+</div>
+
+
+
+{% endblock %}

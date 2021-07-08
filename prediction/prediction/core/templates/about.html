@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+
+<!-- Title  -->
+{% block title %}About:{% endblock %}
+
+
+<!-- body content -->
+{% block content %}
+
+<h1>About Page</h1>
+
+<p style="color:rgb(4, 8, 63); font-size: 25px; font-family: cursive;">
+    The Iris dataset was used in R.A. Fisher's classic 1936 paper, The Use of Multiple Measurements in Taxonomic Problems, and can also be found on the UCI Machine Learning Repository.
+
+    It includes three iris species with 50 samples each as well as some properties about each flower. One flower species is linearly separable from the other two, but the other two are not linearly separable from each other.
+
+    The columns in this dataset are:
+
+    Id
+    SepalLengthCm
+    SepalWidthCm
+    PetalLengthCm
+    PetalWidthCm
+    Species
+</p>
+
+{% endblock %}

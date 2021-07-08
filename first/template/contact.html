@@ -1,0 +1,26 @@
+{% extends 'base.html'%} 
+
+{% block title %} SCHOOL: contact page {% endblock %}
+
+
+
+{% block content %}
+    <h1>Contact page</h1>
+    <form action="{% url 'contact' %}">
+        <label for="fname">First Name </label>
+        <input type="text" name="fname" minlength="3" maxlength="20" placeholder="First Name" autofocus required>
+        <br><br>
+        <label for="lname">Last Name </label>
+        <input type="text" name="lname" minlength="3" maxlength="20" placeholder="Last  Name" required>
+        <br><br>
+        <label for="gender">Gender :</label>&nbsp;&nbsp;
+        <input type="radio" name="gender" value="Male">Male
+        <input type="radio" name="gender" value="Female">Female
+        <br><br>
+        
+  
+        <label for="desc">Description</label>
+        <textarea name="addr" rows="3" cols="20" placeholder="Description"></textarea>
+       <center><button type="submit"  style="background-color:rgb(63, 33, 233);">SUBMIT</button></center>
+        </form>
+{% endblock %}

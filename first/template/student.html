@@ -1,0 +1,29 @@
+{% extends 'base.html'%} 
+
+{% block title %} ABC: Student page {% endblock %}
+
+{% block label1 %} 
+    <style> 
+         label { font-size: 100%;}
+    </style> 
+{% endblock %}
+
+{% block content %}
+<div bgcolor="indigo">
+<br>
+   <form action="{% url 'student' %}">
+        <label>Student Name:</label>
+        <input type="text" name='name' placeholder="Enter your Name">
+        <p style="font-size: 150%;"><b>Enter Your Marks:</b></p>
+        <label>Science:</label>
+        <input type="number" name='Science' placeholder="Enter Science mark"><br><br>
+        <label>Maths:</label>
+        <input type="number" name='Maths' placeholder="Enter Maths mark"><br><br>
+        <label>English:</label>
+        <input type="number" name='English' placeholder="Enter English mark"><br><br>
+        <label>Social Science:</label>
+        <input type="number" name='SocialScience' placeholder="Enter SocialScience  mark"><br><br>
+       <center><button type='sumbit' style="background-color:rgb(196, 46, 20);">SAVE</button></center>
+    </form>
+    </div>
+{% endblock %}

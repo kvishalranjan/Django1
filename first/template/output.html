@@ -1,0 +1,61 @@
+{% extends 'base.html'%}
+
+{% block title %} ABC: Output - Page {% endblock %}
+
+{% block label1 %}
+<style>
+    td { text-align : center; }
+</style>
+ {% endblock %}
+    
+{% block content %}
+    <h2>Student name: {{name}}</h2>
+    <center>
+    <table class="table" border="2" cellpadding="8" bordercolor="black" bgcolor="Black" cellspacing="0" width="800" height="400" style="font-size:20px;">
+        <caption><h2>REPORT CARD</h2></caption>
+        <thead>
+            <tr bgcolor="pink">
+                <th>Sl.No.</th>
+                <th>Subject</th>
+                <th>Marks</th>
+            
+            </tr>
+            </thead>
+            <tbody>
+    
+            {% for i,j in marks %}
+
+            <tr bgcolor="lightyellow">
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{i}}</td>
+                <td>{{j}}</td>
+
+            </tr>
+            {% endfor %}
+            </tbody>
+            
+            <tfoot>
+                <tr bgcolor="lightyellow">
+                    <th>Total Marks:</th>
+                    <td><b>400</b></td>
+                    <td></td>
+                </tr>
+                <tr bgcolor="lightyellow">
+                    <th colspan="2">Obtained Marks :</th>
+                    <td style="color:rgb(97, 35, 141)"><b>{{total}}</b></td>  
+                </tr>
+                <tr bgcolor="lightyellow">
+                    <th colspan="2">Division :</th>
+                    <td style="color:rgb(136, 187, 34)"><b>{{division}}</b></td>
+                </tr>
+                <tr bgcolor="lightyellow">
+                    <th colspan="2">Percentage :</th>
+                    <td style="color:rgb(1, 136, 12)"><b>{{per}} %</b></td>
+                </tr>
+                
+            </tfoot>
+     
+    </table>
+  
+    </center>
+{% endblock %}

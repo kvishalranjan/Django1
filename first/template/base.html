@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    
+    
+    {% block label1 %} {% endblock %}
+    
+    <style>
+        footer {
+
+            text-align: center;
+            top: 0;
+            width: 100%;
+            color: rgb(238, 158, 11);
+            background-color: rgb(194, 35, 133);
+            padding: 5px;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <div style="background-color: rgb(247, 250, 206);">
+        <center><img src="{% static 'images/school.jpg' %}" alt="School" width="200" height="200"></center>
+        <h1 style="color:indigo; text-align: center;"><u> SCHOOL </u></h1>
+        <br><hr> 
+    </div>
+    <div style="background-color: rgb(195, 246, 101);">
+        <a href="{% url 'home' %}" class='m-3'>HOME</a>&nbsp;&nbsp;&nbsp;
+        <a href="{% url 'about' %}" class='m-3'>ABOUT</a>&nbsp;&nbsp;&nbsp;
+        <a href="{% url 'student' %}" class='m-3'>STUDENT</a>&nbsp;&nbsp;&nbsp;
+        <a href="/contact/" class='m-3'>CONTACT</a>&nbsp;&nbsp;&nbsp;
+    </div>
+    <div>{% block head %}{% endblock %}</div>
+    <div>
+        <img src="{% static 'images/building.jpg' %}" alt="School" width="1270" height="400">
+    </div>
+    
+    <div style="min-height:70vh;">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <footer>
+        <h4><b>
+        <u>ADDRESS:</u><br><br>
+        Bariatu Road,<br>
+        Ranchi,<br>
+        Jharkhand-834009,</b>
+        </h4>
+    </footer>
+</body>
+</html>
