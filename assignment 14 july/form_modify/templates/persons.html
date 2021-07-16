@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" data-auto-replace-svg="nest"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Person</title>
+</head>
+
+<body>
+    <center class='text-success'>
+        <h1> List of Persons ({{filter}})</h1>
+    </center>
+    {% if messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert" '>
+        {% for message in messages %}
+        {% if message.tags == ' error' %} <p style="background-color:red;color:white;">
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+        <h5>{{ message }}</h5>
+        </p>
+        {% else %}
+        <p style="background-color:rgb(77, 63, 206);color:white;">
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+        <h5>{{ message }}</h5>
+        </p>
+        {% endif %}
+        {% endfor %}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endif %}
+
+
+    <a class='link' href="{% url 'specialform:cperson' %}">Create person</a>
+    <a class='link' href="{% url 'main:home' %}">Home</a>
+
+    <form>
+        <select name='filter'>
+
+            <option value='All' selected>---- All ----</option>
+            <option value='Male'>Male</option>
+            <option value='Female'>FeMale</option>
+            <option value="Other">Other</option>
+
+        </select>
+        <button type="submit" class="ml-2 btn btn-success btn-sm">Filter</button>
+    </form>
+
+    <table class="bs-popover-right">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Salary</th>
+                <th scope="col">Is Verified</th>
+                <th scope="col">Documents</th>
+                <th scope="col">Image</th>
+                <th scope="col">Citizenship</th>
+                <th scope="col">Languages</th>
+                <th>Action</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+
+
+
+            {% for person in persons %}
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td><a href="{% url 'specialform:profile' person.id %}"> {{person.first_name}}
+                        {{person.last_name}}</a></td>
+                <td>{{person.email}}</td>
+                <td>{{person.gender}}</td>
+                <td>{{person.salary}}</td>
+                <td>{{person.is_verify}}</td>
+
+
+                <td><a href='{{person.documents.url}}'><i class="fa fa-eye" aria-hidden="true"></i>
+                        Document</a></td>
+                <td>
+                    {% if person.photo %}
+
+                    <img src='{{person.photo.url}}' height=50 width=50>
+                    {% else %}
+                    No Image Found
+                    {% endif %}
+                </td>
+                <td>
+                    <ul>
+                        <li>Citizenship no: {{person.citizen}}</li>
+                        <li>Fathers Name: {{person.citizen.father_name}}</li>
+                        <li>Mothers Name: {{person.citizen.mothername}}</li>
+                        <li>Address: {{person.citizen.address}}</li>
+
+
+
+                    </ul>
+
+                </td>
+                <td>
+                    {% for i in person.language.all %}
+                    {{i.name}}
+
+                    {% endfor %}
+                </td>
+                <td> <a class="btn btn-warning btn-sm m-2" href="{% url 'specialform:edit_person' person.id %}"> <i
+                            class="fas fa-edit ml-1"></i> Update</a>
+                    <a class="btn btn-danger btn-sm m-2" href="{% url 'specialform:delete' person.id %}">
+                        <i class="fas fa-trash"></i> Delete</a>
+
+                </td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>
