@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+
+    <title>Technology page</title>
+</head>
+
+<body>
+    <center>
+        <h1> List of technologies</h1>
+    </center>
+    <div bgcolor="lightyellow">
+        <form>
+         <select name="technology_choice">
+            <option value="All" selected>All</option> 
+             {% for i in list1 %}
+             <option value='{{i}}'>{{i}}</option>
+             {% endfor %}
+         </select>&nbsp;&nbsp;&nbsp;
+         <button type='sumbit' style="background-color:rgb(202, 200, 63);">Filter</button>
+         </form>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Sl.no.</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Carrer</th>
+                <th scope="col">Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for carrer in carrers %}
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{carrer.first_name}} {{carrer.last_name}}</td>
+                <td>{{carrer.age}}</td>
+                <td>{{carrer.carrer}} </td>
+                <td>{{carrer.address}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    
+
+    
+    -->
+</body>
+
+</html>
